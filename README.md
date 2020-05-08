@@ -1,8 +1,17 @@
 # HARDFORM
-Single-Header platform/compiler wrangler in plain old C (mostly preprocessor).
+A single-Header library that handles compiler and platform differences using mostly C preprocessor for use in C & C++*.
+<br>
 
-Simply #include "HARDFORM.H"
+#### USAGE
+Simply <code>#include "HARDFORM.H"</code> somewhere in your code.
+<br>
+That's it. Enjoy your new typedefs and preprocessor constants.
+<br>
 
-Enjoy the #ifdefs.
+#### STATUS
+This mini-library is currently rudimentary.
+It has been tested with: VS2017, GCC, CLANG, Pelles C, VC6.
+<br>
 
-Status: currently rudimentary.
+#### NOTE THAT...
+* C++ may complain about type conversions if using the type **any**.

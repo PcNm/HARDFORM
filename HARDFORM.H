@@ -7,6 +7,7 @@
  *  Updated on: 11 apr 2020
  *  Updated on:  8 may 2020
  *      Author: Martin Andreasson
+ *     Version: 0.1
  *     License: Mozilla Public License Version 2.0
  * ---------------------------------------------------------------------------
  * This is a single-header library for detecting compiler and platform.

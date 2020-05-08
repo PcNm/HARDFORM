@@ -9,7 +9,7 @@ That's it. Enjoy your new typedefs and preprocessor constants.
 <br>
 
 #### STATUS
-This mini-library is currently rudimentary.
+This mini-library is currently rudimentary. <br>
 It has been tested with: VS2017, GCC, CLANG, Pelles C, VC6.
 <br>
 

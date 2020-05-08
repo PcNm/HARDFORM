@@ -604,14 +604,22 @@
 #endif                                                           /* MINMAX */
 /*#########################################################################*/
 #if 1                                                             /* TYPES */
-typedef signed char            s08;   /** 1 byte  of data, signed.         */
-typedef signed short           s16;   /** 2 bytes of data, signed.         */
-typedef signed int             s32;   /** 4 bytes of data, signed.         */
-typedef signed long long       s64;   /** 8 bytes of data, signed.         */
-typedef unsigned char          u08;   /** 1 byte  of data, unsigned.       */
-typedef unsigned short         u16;   /** 2 bytes of data, unsigned.       */
-typedef unsigned int           u32;   /** 4 bytes of data, unsigned.       */
-typedef unsigned long long     u64;   /** 8 bytes of data, unsigned.       */
+typedef signed char            s08;   /** 1 byte  integer, signed.         */
+typedef signed short           s16;   /** 2 bytes integer, signed.         */
+typedef signed int             s32;   /** 4 bytes integer, signed.         */
+#if defined( HF_COMPILED_BY_MSVC_COMPILER )
+    typedef signed __int64     s64;   /** 8 bytes integer, signed.         */
+#else
+    typedef signed long long   s64;   /** 8 bytes integer, signed.         */
+#endif
+typedef unsigned char          u08;   /** 1 byte  integer, unsigned.       */
+typedef unsigned short         u16;   /** 2 bytes integer, unsigned.       */
+typedef unsigned int           u32;   /** 4 bytes integer, unsigned.       */
+#if defined( HF_COMPILED_BY_MSVC_COMPILER )
+    typedef unsigned __int64   u64;   /** 8 bytes integer, unsigned.       */
+#else
+    typedef unsigned long long u64;   /** 8 bytes integer, unsigned.       */
+#endif
 typedef unsigned char         byte;   /** ONE BYTE                         */
 typedef const char*           cstr;   /** const char c-string.             */
 typedef float                  f32;   /**  4 byte float.                   */

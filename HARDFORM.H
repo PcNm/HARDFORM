@@ -658,9 +658,21 @@ typedef enum hf_eol hf_eol_t;
 #	define nullp (void*)(0)
 #endif                                                            /* nullp */
 /*#########################################################################*/
-#ifndef NIL                                 /** NIL (REPEAT INITALIZATION) */
+#ifndef NIL                                /** NIL (REPEAT INITIALIZATION) */
 #	define NIL {0,}
-#endif                                      /** NIL (REPEAT INITALIZATION) */
+#endif                                     /** NIL (REPEAT INITIALIZATION) */
+/*#########################################################################*/
+#if defined( HF_COMPILED_BY_MSVC_COMPILER )             /* VARIADIC MACROS */
+#	if (_MSC_VER >= 1300)
+#		define HF_COMPILER_SUPPORTS_VARIADIC_MACRO
+#	endif
+#elif defined( HF_COMPILED_BY_CLANG_COMPILER )
+#	define HF_COMPILER_SUPPORTS_VARIADIC_MACRO
+#elif defined( HF_COMPILED_BY_GCC_COMPILER )
+#	define HF_COMPILER_SUPPORTS_VARIADIC_MACRO
+#else
+#	error "TODO: add test for this compiler's variadic macro support"
+#endif                                                  /* VARIADIC MACROS */
 /*#########################################################################*/
 #ifndef HF_MACRO_MAGIC                                      /* MACRO MAGIC */
 #define HF_MACRO_MAGIC 1
@@ -852,8 +864,12 @@ typedef hf_size hf_result;      /** Alias of hf_size used as a returncode. */
 /*#########################################################################*/
 #ifndef HF_RESTRICT                                         /* RESTRICTION */
 #	if defined( HF_COMPILED_BY_MSVC_COMPILER )
-		/* the use of 'restrict' is unsupported in msvc */
-#		define HF_RESTRICT __restrict
+		/* "the use of 'restrict' is unsupported in msvc" */
+#		if (_MSC_VER <= 1200)
+#			define HF_RESTRICT /* not available in VC++ 6 */
+#		else
+#			define HF_RESTRICT __restrict
+#		endif
 #	elif defined( HF_COMPILED_BY_CLANG_COMPILER )
 #		define HF_RESTRICT __restrict /* supported by gcc,clang,msvc */
 #	elif defined( HF_COMPILED_BY_GCC_COMPILER )
